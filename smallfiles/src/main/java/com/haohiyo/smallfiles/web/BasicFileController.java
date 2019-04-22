@@ -45,12 +45,26 @@ public class BasicFileController {
 	@Value("${file.maxsize}")
 	int fileMaxSize;//in KB
 
+	/**
+	 * 文件上传
+	 * @param table hbase表名
+	 * @param in 文件流
+	 * @return
+	 * @throws IOException
+	 */
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public ApiBaseResponse<JSONObject> upload(@PathVariable() String table, InputStream in) throws IOException {
 		
 		return doUpload(table, KeyGenerator.genKey(), in);
 	}
 
+	/**
+	 * 根据key文件下载
+	 * @param table hbase表名
+	 * @param key upload返回的data.path
+	 * @param response
+	 * @throws IOException
+	 */
 	@RequestMapping(value = "/download/{key}", method = RequestMethod.GET)
 	public void download(@PathVariable() String table, @PathVariable() String key, HttpServletResponse response)
 			throws IOException {
@@ -74,6 +88,14 @@ public class BasicFileController {
 		IOUtils.closeQuietly(hTable);
 	}
 
+	/**
+	 * 根据key删除
+	 * @param table hbase表名
+	 * @param key upload返回的data.path
+	 * @param request
+	 * @return
+	 * @throws IOException
+	 */
 	@RequestMapping(value = "/delete/{key}")
 	public ApiBaseResponse<JSONObject> delete(@PathVariable() String table, @PathVariable() String key,
 			HttpServletRequest request) throws IOException {
@@ -89,6 +111,9 @@ public class BasicFileController {
 		return res;
 	}
 
+	/*
+	 * check and do upload process
+	 */
 	private ApiBaseResponse<JSONObject> doUpload(String table, String key, InputStream in) throws IOException {
 		ApiBaseResponse<JSONObject> res = new ApiBaseResponse<>();
 

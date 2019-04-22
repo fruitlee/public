@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @PropertySource(value = {"file:/opt/config/smallfiles/config.properties"})
 public class ServiceStarter {
 
+	//test if service success start 
 	@RequestMapping("/")
 	String home() {
 		return "Welcome to small-files storage service!";
