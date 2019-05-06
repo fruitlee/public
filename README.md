@@ -7,7 +7,7 @@ File storage service. Use the hbase feature to store/read large numbers of small
 ### config file 
 /opt/config/smallfiles/config.properties [Follow the principle of separate configuration]
 ### Run with jar 
-mvn package 
+mvn package  
 java -jar smallfiles-x.x.x.jar 
 ### Run in IDE 
 Run As - > ServiceStarter.java  
