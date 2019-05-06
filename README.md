@@ -1,7 +1,7 @@
 # smallfiles 
 File storage service. Use the hbase feature to store/read large numbers of small files 
 ### ENV 
-1.hbase [Column family 'cf' must exists]  
+1.hbase [Specified table's Column family 'cf' must exists]  
 2.jdk >= 1.8  
 3.maven3  
 ### config file 
